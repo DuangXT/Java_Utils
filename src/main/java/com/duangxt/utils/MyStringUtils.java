@@ -34,7 +34,7 @@ public class MyStringUtils {
 
     public static final String REGEX_NUMBER_VALUE = "^[+|-]?[0-9]+(.[0-9]+)?$";
     public static final String REGEX_JAVA_SCIENTIFIC_COUNTING = "^[+|-]?[0-9]+(.[0-9]+)?([f|F|d|D|l|L]|([e|E]\\-?\\d+))?$";
-    public static final String REGEX_LINE_FEED = "\r\n|\r|\n|\n\r";
+    public static final String REGEX_LINE_FEED = "\r\n|\r|\n|\n\r|\\u000d";
     public static final String REGEX_SPACE = REGEX_LINE_FEED + "| |　|\t";
 
     /**
@@ -115,20 +115,32 @@ public class MyStringUtils {
 
         switch (s) {
             case "-":
+                break;
             case "0":
+                break;
             case "false":
+                break;
             case "null":
-            case "nil":
-            case "no":
-            case "undefined":
+                break;
+            case "nil": // golang, lua
+                break;
+            case "undefined": // javascript
+                break;
+            case "nan": // Not a Number
+                break;
+            case "none": // python
+                break;
             case "error":
-                return false;
+                break;
+            case "no":
+                break;
 			/*case "1":
 			case "true":
 			case "yes":*/
             default: // 其它字符串值，只要非空，都返回true
                 return true;
         }
+        return false;
     }
 
     /** 字符串是否是纯数字（不允许有空格） */
