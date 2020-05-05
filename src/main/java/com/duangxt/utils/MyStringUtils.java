@@ -35,7 +35,7 @@ public class MyStringUtils {
     public static final String REGEX_NUMBER_VALUE = "^[+|-]?[0-9]+(.[0-9]+)?$";
     public static final String REGEX_JAVA_SCIENTIFIC_COUNTING = "^[+|-]?[0-9]+(.[0-9]+)?([f|F|d|D|l|L]|([e|E]\\-?\\d+))?$";
     public static final String REGEX_LINE_FEED = "\r\n|\r|\n|\n\r|\\u000d";
-    public static final String REGEX_SPACE = REGEX_LINE_FEED + "| |　|\t";
+    public static String REGEX_SPACE = REGEX_LINE_FEED + "| |　|\t|%20|\\u000a";
 
     /**
      * if string value is a (null,"","null"), return true;<br/>
